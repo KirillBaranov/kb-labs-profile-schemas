@@ -1,0 +1,128 @@
+{
+  "$id": "https://schemas.kb-labs.dev/profile/profile.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "KB Labs Profile",
+  "type": "object",
+  "required": [
+    "name",
+    "kind",
+    "scope",
+    "version",
+    "products"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "kind": {
+      "enum": [
+        "review",
+        "tests",
+        "docs",
+        "assistant",
+        "composite"
+      ]
+    },
+    "scope": {
+      "enum": [
+        "repo",
+        "package",
+        "dir"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "extends": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "overrides": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true,
+      "default": []
+    },
+    "defaults": {
+      "type": "object",
+      "properties": {
+        "io": {
+          "$ref": "https://schemas.kb-labs.dev/profile/profile.io.json"
+        },
+        "diff": {
+          "$ref": "https://schemas.kb-labs.dev/profile/profile.diff.json"
+        },
+        "capabilities": {
+          "$ref": "https://schemas.kb-labs.dev/profile/profile.cap.json"
+        }
+      },
+      "additionalProperties": false,
+      "default": {}
+    },
+    "products": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "config": {
+            "type": "string"
+          },
+          "io": {
+            "$ref": "https://schemas.kb-labs.dev/profile/profile.io.json"
+          },
+          "diff": {
+            "$ref": "https://schemas.kb-labs.dev/profile/profile.diff.json"
+          },
+          "capabilities": {
+            "$ref": "https://schemas.kb-labs.dev/profile/profile.cap.json"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "discovery": {
+      "type": "object",
+      "properties": {
+        "packages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        },
+        "languages": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": []
+        }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}

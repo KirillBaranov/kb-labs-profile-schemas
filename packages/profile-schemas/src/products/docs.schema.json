@@ -1,0 +1,17 @@
+{
+  "$id": "https://schemas.kb-labs.dev/profile/products/docs.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Docs Product Config",
+  "type": "object",
+  "properties": {
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": true,
+  "default": {}
+}

@@ -1,0 +1,24 @@
+{
+  "$id": "https://schemas.kb-labs.dev/profile/products/assistant.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Assistant Product Config",
+  "type": "object",
+  "properties": {
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "allowTools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": true,
+  "default": {}
+}

@@ -1,0 +1,19 @@
+{
+  "allow": [
+    "apps/*",
+    "packages/*",
+    ".kb/profiles/**"
+  ],
+  "deny": [
+    "**/node_modules/**",
+    "**/.env*",
+    "**/*.pem"
+  ],
+  "extensions": [
+    "ts",
+    "tsx",
+    "js",
+    "json",
+    "md"
+  ]
+}

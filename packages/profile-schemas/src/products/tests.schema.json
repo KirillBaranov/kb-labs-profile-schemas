@@ -1,0 +1,22 @@
+{
+  "$id": "https://schemas.kb-labs.dev/profile/products/tests.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tests Product Config",
+  "type": "object",
+  "properties": {
+    "matrix": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "coverageTarget": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    }
+  },
+  "additionalProperties": true,
+  "default": {}
+}

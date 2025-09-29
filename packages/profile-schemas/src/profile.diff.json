@@ -1,0 +1,17 @@
+{
+  "$id": "https://schemas.kb-labs.dev/profile/profile.diff.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Profile Diff Policy",
+  "type": "object",
+  "properties": {
+    "ignore": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    }
+  },
+  "additionalProperties": false,
+  "default": {}
+}
