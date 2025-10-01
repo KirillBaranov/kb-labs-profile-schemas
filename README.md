@@ -1,21 +1,34 @@
-# KB Labs — Product Template
+# KB Labs Profile Schemas
 
-This is the **baseline template** for products under the **@kb-labs** namespace.  
-It is designed for multi-package repositories using pnpm workspaces.
+A **monorepo with JSON Schema contracts and profiles** for the KB Labs ecosystem.  
+It provides validation, consistency, and compatibility between products (AI Review, AI Docs, AI Tests, AI Assistant, etc.).
 
-**Goals:** Fast bootstrap, unified quality rules, simple publishing, and reusable core.
+**Goals:** Standardized profile validation, consistent schemas across products, and reusable profile presets.
 
 ## 📁 Repository Structure
 
 ```
 apps/
-├── demo/                    # Example app / playground
+├── demo/                    # Example app demonstrating profile usage
 packages/
-├── package-name/            # Example package (lib/cli/adapter)
-fixtures/                    # Fixtures for snapshot/integration testing
+├── profile-schemas/         # Core JSON Schema definitions for profiles and products
+├── profile-fixtures/        # Test profiles (valid/invalid) for schema validation
+├── profile-presets-io/      # I/O policy presets
+├── profile-presets-backend-core/  # Backend service presets
+├── profile-presets-web-core/      # Frontend/web project presets
+└── profile-examples/        # Demonstration profile examples
 docs/
 └── adr/                     # Architecture Decision Records (ADRs)
 ```
+
+## 📦 Available Packages
+
+- **[@kb-labs/profile-schemas](./packages/profile-schemas/)** — Core JSON Schema definitions for profiles and products
+- **[@kb-labs/profile-fixtures](./packages/profile-fixtures/)** — Test profiles (valid/invalid) for schema validation
+- **[@kb-labs/profile-presets-io](./packages/profile-presets-io/)** — I/O policy presets
+- **[@kb-labs/profile-presets-backend-core](./packages/profile-presets-backend-core/)** — Backend service presets
+- **[@kb-labs/profile-presets-web-core](./packages/profile-presets-web-core/)** — Frontend/web project presets
+- **[@kb-labs/profile-examples](./packages/profile-examples/)** — Demonstration profile examples
 
 ## 🚀 Quick Start
 
@@ -34,59 +47,57 @@ pnpm test        # Run tests
 pnpm lint        # Lint code
 ```
 
-### Creating a New Package
+### Using Profile Schemas
 
 ```bash
-# Using the CLI tool (recommended)
-pnpm dlx @kb-labs/create-pkg my-new-pkg
+# Install specific profile packages
+pnpm add -D @kb-labs/profile-schemas
+```
 
-# Or manually copy and modify
-cp -r packages/package-name packages/<new-package-name>
-# Then update metadata and imports
+Example profile validation:
+```ts
+import Ajv from "ajv";
+import profileSchema from "@kb-labs/profile-schemas/profile";
+
+const ajv = new Ajv();
+const validate = ajv.compile(profileSchema);
+
+const data = { 
+  name: "my-profile", 
+  kind: "composite", 
+  scope: "repo", 
+  version: "1.0.0", 
+  products: {} 
+};
+
+if (!validate(data)) {
+  console.error(validate.errors);
+}
+```
+
+### Schema Validation
+
+Locally validate all schemas and fixtures:
+```bash
+pnpm -F @kb-labs/profile-schemas run schemas:check
 ```
 
 ## 🛠️ Available Scripts
 
-| Script             | Description                                |
-| ------------------ | ------------------------------------------ |
-| `pnpm dev`         | Start development mode for all packages    |
-| `pnpm build`       | Build all packages                         |
-| `pnpm build:clean` | Clean and build all packages               |
-| `pnpm test`        | Run all tests                              |
-| `pnpm test:watch`  | Run tests in watch mode                    |
-| `pnpm lint`        | Lint all code                              |
-| `pnpm lint:fix`    | Fix linting issues                         |
-| `pnpm type-check`  | TypeScript type checking                   |
-| `pnpm check`       | Run lint, type-check, and tests            |
-| `pnpm ci`          | Full CI pipeline (clean, build, check)     |
-| `pnpm clean`       | Clean build artifacts                      |
-| `pnpm clean:all`   | Clean all node_modules and build artifacts |
-
-### 🔧 DevKit Commands
-
-| Script              | Description                                |
-| ------------------- | ------------------------------------------ |
-| `pnpm devkit:sync`  | Sync DevKit configurations to workspace   |
-| `pnpm devkit:check` | Check if DevKit sync is needed             |
-| `pnpm devkit:force` | Force DevKit sync (overwrite existing)     |
-| `pnpm devkit:help`  | Show DevKit sync help                      |
-
-## 🔧 DevKit Integration
-
-This template uses `@kb-labs/devkit` for shared tooling and configurations. DevKit provides:
-
-- **Unified Configurations:** ESLint, Prettier, TypeScript, Vitest, and TSUP configs
-- **Automatic Sync:** Keeps workspace configs in sync with latest DevKit versions
-- **Zero Maintenance:** No need to manually update config files
-
-### DevKit Commands Usage
-
-- **`pnpm devkit:sync`** - Syncs DevKit configurations to your workspace (runs automatically on `pnpm install`)
-- **`pnpm devkit:check`** - Checks if your workspace configs are up-to-date with DevKit
-- **`pnpm devkit:force`** - Forces sync even if local files exist (overwrites local changes)
-- **`pnpm devkit:help`** - Shows detailed help and available options
-
-For more details, see [ADR-0005: Use DevKit for Shared Tooling](docs/adr/0005-use-devkit-for-shared-tooling.md).
+| Script | Description |
+|--------|-------------|
+| `pnpm dev` | Start development mode for all packages |
+| `pnpm build` | Build all packages |
+| `pnpm build:clean` | Clean and build all packages |
+| `pnpm test` | Run all tests |
+| `pnpm test:watch` | Run tests in watch mode |
+| `pnpm lint` | Lint all code |
+| `pnpm lint:fix` | Fix linting issues |
+| `pnpm type-check` | TypeScript type checking |
+| `pnpm check` | Run lint, type-check, and tests |
+| `pnpm ci` | Full CI pipeline (clean, build, check) |
+| `pnpm clean` | Clean build artifacts |
+| `pnpm clean:all` | Clean all node_modules and build artifacts |
 
 ## 📋 Development Policies
 
@@ -94,7 +105,19 @@ For more details, see [ADR-0005: Use DevKit for Shared Tooling](docs/adr/0005-us
 - **Testing:** Vitest with fixtures for integration testing
 - **Versioning:** SemVer with automated releases through Changesets
 - **Architecture:** Document decisions in ADRs (see `docs/adr/`)
-- **Tooling:** Shared configurations via `@kb-labs/devkit` (see [ADR-0005](docs/adr/0005-use-devkit-for-shared-tooling.md))
+- **Schema Validation:** All schemas must be validated against test fixtures
+- **Backward Compatibility:** Schema changes must maintain backward compatibility
+
+## ⚙️ CI Integration
+
+This repository uses DevKit reusable workflows.  
+Any project in the ecosystem can integrate ready-made profile validation:
+
+```yaml
+jobs:
+  validate-profiles:
+    uses: KirillBaranov/kb-labs-devkit/.github/workflows/profiles-validate-reusable.yml@main
+```
 
 ## 🔧 Requirements
 
