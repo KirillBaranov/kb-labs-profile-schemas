@@ -29,14 +29,18 @@
     "type-check": "tsc --noEmit",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "schemas:check": "tsx src/validate.ts",
     "test": "pnpm -s schemas:check && vitest run -c ../../vitest.config.ts",
-    "test:watch": "vitest -c ../../vitest.config.ts"
+    "test:watch": "vitest -c ../../vitest.config.ts",
+    "schemas:check": "tsx src/validate.ts",
+    "ci": "pnpm -s lint && pnpm -s type-check && pnpm -s build && pnpm -s schemas:check"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
   },
   "devDependencies": {
     "@kb-labs/devkit": "github:KirillBaranov/kb-labs-devkit#main",
-    "ajv": "^8.17.1",
-    "ajv-formats": "^3.0.1",
+    "@types/node": "^22",
     "tsup": "^8",
     "tsx": "^4.20.5",
     "vitest": "^3"
