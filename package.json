@@ -44,6 +44,8 @@
     "// ——— ci/qa": "────────────────────────────────────────",
     "check": "pnpm lint && pnpm type-check && pnpm test",
     "ci": "pnpm clean && pnpm build && pnpm check",
+    "profiles:ci": "pnpm -F @kb-labs/profile-schemas -s run ci",
+    "profiles:validate": "pnpm -F @kb-labs/profile-schemas -s run schemas:check",
     "// ——— cleanup": "────────────────────────────────────────",
     "clean": "pnpm -r run clean",
     "clean:all": "rimraf node_modules packages/*/node_modules apps/*/node_modules dist"
