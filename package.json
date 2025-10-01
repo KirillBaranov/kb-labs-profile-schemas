@@ -76,5 +76,23 @@
     "node": ">=18.18.0",
     "pnpm": ">=9.0.0"
   },
-  "packageManager": "pnpm@9.11.0"
+  "packageManager": "pnpm@9.11.0",
+  "exports": {
+    ".": "./proxy/index.js",
+    "./profile": "./packages/profile-schemas/src/profile.schema.json",
+    "./rules": "./packages/profile-schemas/src/rules.schema.json",
+    "./profile.io": "./packages/profile-schemas/src/profile.io.json",
+    "./profile.diff": "./packages/profile-schemas/src/profile.diff.json",
+    "./profile.cap": "./packages/profile-schemas/src/profile.cap.json",
+    "./products/review": "./packages/profile-schemas/src/products/review.schema.json",
+    "./products/tests": "./packages/profile-schemas/src/products/tests.schema.json",
+    "./products/docs": "./packages/profile-schemas/src/products/docs.schema.json",
+    "./products/assistant": "./packages/profile-schemas/src/products/assistant.schema.json"
+  },
+  "files": [
+    "packages/profile-schemas/src/",
+    "proxy/",
+    "README.md",
+    "LICENSE"
+  ]
 }
