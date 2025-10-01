@@ -4,6 +4,7 @@
   "private": true,
   "description": "KB Labs profile schemas — comprehensive schemas and presets for user profiles.",
   "type": "module",
+  "types": "./proxy/index.d.ts",
   "author": {
     "name": "Kirill Baranov",
     "url": "https://github.com/kirill-baranov"
@@ -77,6 +78,9 @@
     "pnpm": ">=9.0.0"
   },
   "packageManager": "pnpm@9.11.0",
+  "dependencies": {
+    "@types/json-schema": "^7.0.15"
+  },
   "exports": {
     ".": "./proxy/index.js",
     "./profile": "./packages/profile-schemas/src/profile.schema.json",
