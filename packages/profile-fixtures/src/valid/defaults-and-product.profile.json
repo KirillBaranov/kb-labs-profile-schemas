@@ -1,0 +1,65 @@
+{
+  "$schema": "https://schemas.kb-labs.dev/profile/profile.schema.json",
+  "name": "defaults-and-product",
+  "kind": "composite",
+  "scope": "repo",
+  "version": "1.0.0",
+  "defaults": {
+    "io": {
+      "allow": [
+        "apps/*",
+        "packages/*",
+        ".kb/profiles/**"
+      ],
+      "deny": [
+        "**/node_modules/**",
+        "**/.env*",
+        "**/*.pem"
+      ],
+      "extensions": [
+        "ts",
+        "tsx",
+        "js",
+        "json",
+        "md"
+      ],
+      "maxFiles": 8000,
+      "maxBytes": 150000000,
+      "followSymlinks": false
+    },
+    "diff": {
+      "ignore": [
+        "**/dist/**",
+        "**/*.lock",
+        ".vscode/**",
+        ".turbo/**"
+      ]
+    },
+    "capabilities": {
+      "read": [
+        "rules",
+        "docs",
+        "adr"
+      ],
+      "write": []
+    }
+  },
+  "products": {
+    "review": {
+      "enabled": true,
+      "io": {
+        "allow": [
+          "docs/**"
+        ],
+        "deny": [
+          "**/secrets/**"
+        ]
+      },
+      "diff": {
+        "ignore": [
+          "**/CHANGELOG.md"
+        ]
+      }
+    }
+  }
+}

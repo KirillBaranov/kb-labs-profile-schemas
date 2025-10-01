@@ -1,0 +1,8 @@
+{
+  "$schema": "https://schemas.kb-labs.dev/profile/profile.schema.json",
+  "name": "empty-products",
+  "kind": "composite",
+  "scope": "repo",
+  "version": "1.0.0",
+  "products": {}
+}
