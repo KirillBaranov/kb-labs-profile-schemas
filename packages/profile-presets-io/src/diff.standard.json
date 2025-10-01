@@ -1,7 +1,9 @@
-[
-  "**/dist/**",
-  "**/*.lock",
-  ".vscode/**",
-  ".idea/**",
-  ".turbo/**"
-]
+{
+  "$schema": "https://schemas.kb-labs.dev/profile/profile.diff.json",
+  "ignore": [
+    "**/dist/**",
+    "**/*.lock",
+    ".vscode/**",
+    ".turbo/**"
+  ]
+}

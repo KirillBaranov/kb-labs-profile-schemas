@@ -1,0 +1,37 @@
+{
+  "allow": [
+    "apps/**",
+    "packages/**",
+    "docs/**",
+    "public/**",
+    "static/**"
+  ],
+  "deny": [
+    "**/node_modules/**",
+    "**/.env*",
+    "**/*.pem",
+    "**/dist/**",
+    "**/build/**",
+    "**/coverage/**"
+  ],
+  "extensions": [
+    "ts",
+    "tsx",
+    "js",
+    "jsx",
+    "json",
+    "md",
+    "html",
+    "css",
+    "scss",
+    "svg",
+    "png",
+    "jpg",
+    "jpeg",
+    "gif",
+    "webp"
+  ],
+  "maxFiles": 10000,
+  "maxBytes": 200000000,
+  "followSymlinks": false
+}

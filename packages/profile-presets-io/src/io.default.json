@@ -1,7 +1,7 @@
 {
   "allow": [
-    "apps/*",
-    "packages/*",
+    "apps/**",
+    "packages/**",
     ".kb/profiles/**"
   ],
   "deny": [
@@ -15,5 +15,8 @@
     "js",
     "json",
     "md"
-  ]
+  ],
+  "maxFiles": 8000,
+  "maxBytes": 150000000,
+  "followSymlinks": false
 }
