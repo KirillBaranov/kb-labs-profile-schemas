@@ -60,7 +60,8 @@
     ]
   },
   "devDependencies": {
-    "@kb-labs/devkit": "github:KirillBaranov/kb-labs-devkit#main",
+    "@kb-labs/devkit": "link:../kb-labs-devkit",
+    "@types/node": "^24.3.3",
     "@typescript-eslint/eslint-plugin": "^8",
     "@typescript-eslint/parser": "^8",
     "@vitest/coverage-v8": "^3",
@@ -70,6 +71,7 @@
     "prettier": "^3",
     "rimraf": "^6",
     "tsup": "^8",
+    "tsx": "^4.20.6",
     "typescript": "^5",
     "vitest": "^3.2.4"
   },
@@ -79,7 +81,9 @@
   },
   "packageManager": "pnpm@9.11.0",
   "dependencies": {
-    "@types/json-schema": "^7.0.15"
+    "@types/json-schema": "^7.0.15",
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
   },
   "exports": {
     ".": "./proxy/index.js",
