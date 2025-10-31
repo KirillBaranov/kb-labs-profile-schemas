@@ -6,11 +6,15 @@ declare module "@kb-labs/profile-schemas" {
   export const io: JSONSchema7;
   export const diff: JSONSchema7;
   export const cap: JSONSchema7;
+  export const profileManifestV1: JSONSchema7;
 
   export const review: JSONSchema7;
   export const tests: JSONSchema7;
   export const docs: JSONSchema7;
   export const assistant: JSONSchema7;
+  export const devlink: JSONSchema7;
+  export const mind: JSONSchema7;
+  export const release: JSONSchema7;
 
   declare const _default: {
     profile: JSONSchema7;
@@ -18,11 +22,15 @@ declare module "@kb-labs/profile-schemas" {
     io: JSONSchema7;
     diff: JSONSchema7;
     cap: JSONSchema7;
+    profileManifestV1: JSONSchema7;
     products: {
       review: JSONSchema7;
       tests: JSONSchema7;
       docs: JSONSchema7;
       assistant: JSONSchema7;
+      devlink: JSONSchema7;
+      mind: JSONSchema7;
+      release: JSONSchema7;
     };
   };
 
@@ -49,6 +57,10 @@ declare module "@kb-labs/profile-schemas/profile.cap" {
   const schema: JSONSchema7;
   export default schema;
 }
+declare module "@kb-labs/profile-schemas/profile-manifest-v1.schema" {
+  const schema: JSONSchema7;
+  export default schema;
+}
 declare module "@kb-labs/profile-schemas/products/review" {
   const schema: JSONSchema7;
   export default schema;
@@ -62,6 +74,18 @@ declare module "@kb-labs/profile-schemas/products/docs" {
   export default schema;
 }
 declare module "@kb-labs/profile-schemas/products/assistant" {
+  const schema: JSONSchema7;
+  export default schema;
+}
+declare module "@kb-labs/profile-schemas/products/devlink" {
+  const schema: JSONSchema7;
+  export default schema;
+}
+declare module "@kb-labs/profile-schemas/products/mind" {
+  const schema: JSONSchema7;
+  export default schema;
+}
+declare module "@kb-labs/profile-schemas/products/release" {
   const schema: JSONSchema7;
   export default schema;
 }
