@@ -1,0 +1,56 @@
+{
+  "$id": "https://schemas.kb-labs.dev/profile/products/release.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Release Product Config",
+  "type": "object",
+  "properties": {
+    "registry": {
+      "type": "string",
+      "format": "uri",
+      "default": "https://registry.npmjs.org"
+    },
+    "strategy": {
+      "enum": ["semver"],
+      "default": "semver"
+    },
+    "bump": {
+      "enum": ["patch", "minor", "major", "auto"],
+      "default": "auto"
+    },
+    "strict": {
+      "type": "boolean",
+      "default": true
+    },
+    "verify": {
+      "type": "array",
+      "items": {
+        "enum": ["audit", "devlink", "mind", "tests", "build"]
+      },
+      "default": ["audit", "build", "tests"]
+    },
+    "publish": {
+      "type": "object",
+      "properties": {
+        "npm": { "type": "boolean", "default": true },
+        "github": { "type": "boolean", "default": false }
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "maxHistory": { "type": "number", "default": 5, "minimum": 1 }
+      }
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "json": { "type": "boolean", "default": true },
+        "md": { "type": "boolean", "default": true },
+        "text": { "type": "boolean", "default": true }
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

@@ -95,7 +95,8 @@
     "./products/review": "./packages/profile-schemas/src/products/review.schema.json",
     "./products/tests": "./packages/profile-schemas/src/products/tests.schema.json",
     "./products/docs": "./packages/profile-schemas/src/products/docs.schema.json",
-    "./products/assistant": "./packages/profile-schemas/src/products/assistant.schema.json"
+    "./products/assistant": "./packages/profile-schemas/src/products/assistant.schema.json",
+    "./products/release": "./packages/profile-schemas/src/products/release.schema.json"
   },
   "files": [
     "packages/profile-schemas/src/",
