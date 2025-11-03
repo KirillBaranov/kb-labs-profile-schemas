@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.kb-labs.dev/products/mind.schema.json",
+  "title": "Mind Product Config",
+  "type": "object",
+  "properties": {
+    "providers": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "workdir": { "type": "string" }
+  },
+  "additionalProperties": true
+}
+

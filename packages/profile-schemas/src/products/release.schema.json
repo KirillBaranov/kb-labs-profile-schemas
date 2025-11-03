@@ -49,6 +49,74 @@
         "md": { "type": "boolean", "default": true },
         "text": { "type": "boolean", "default": true }
       }
+    },
+    "changelog": {
+      "type": "object",
+      "properties": {
+        "enabled": { "type": "boolean", "default": true },
+        "includeTypes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["feat", "fix", "perf", "refactor", "revert"]
+        },
+        "excludeTypes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["chore", "ci"]
+        },
+        "ignoreAuthors": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["dependabot", "renovate", "github-actions[bot]", "*[bot]"]
+        },
+        "scopeMap": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "collapseMerges": { "type": "boolean", "default": true },
+        "collapseReverts": { "type": "boolean", "default": true },
+        "preferMergeSummary": { "type": "boolean", "default": true },
+        "bumpStrategy": {
+          "enum": ["independent", "ripple", "lockstep"],
+          "default": "independent"
+        },
+        "workspace": { "type": "boolean", "default": true },
+        "perPackage": { "type": "boolean", "default": true },
+        "format": {
+          "enum": ["json", "md", "both"],
+          "default": "both"
+        },
+        "level": {
+          "enum": ["compact", "standard", "detailed"],
+          "default": "standard"
+        },
+        "template": { "type": ["string", "null"] },
+        "locale": {
+          "enum": ["en", "ru"],
+          "default": "en"
+        },
+        "cache": { "type": "boolean", "default": true },
+        "requireAudit": { "type": "boolean", "default": true },
+        "requireSignedTags": { "type": "boolean", "default": false },
+        "redactPatterns": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": ["(?i)token=\\w+", "(?i)apikey=\\w+", "(https?://[^\\s]+@[^\\s]+)", "(gh[ps]_[A-Za-z0-9_]+)"]
+        },
+        "maxBodyLength": { "type": "number", "default": 500 },
+        "ignoreSubmodules": { "type": "boolean", "default": true }
+      }
+    },
+    "git": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "enum": ["auto", "github", "gitlab", "generic"],
+          "default": "auto"
+        },
+        "baseUrl": { "type": ["string", "null"] },
+        "autoUnshallow": { "type": "boolean", "default": false }
+      }
     }
   },
   "additionalProperties": true

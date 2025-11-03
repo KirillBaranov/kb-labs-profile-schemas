@@ -27,9 +27,9 @@
     "test:watch": "vitest -c ../../vitest.config.ts"
   },
   "devDependencies": {
-    "tsx": "^4.20.5",
-    "vitest": "^3",
     "@kb-labs/devkit": "link:../../../kb-labs-devkit",
-    "tsup": "^8"
+    "tsup": "^8",
+    "tsx": "^4.20.5",
+    "vitest": "^3"
   }
 }

@@ -67,8 +67,11 @@ refactor: simplify schema structure
 ### Architecture Decisions
 
 - For significant architectural changes, create an **ADR** (Architecture Decision Record) in `docs/adr/`
-- Follow the existing ADR format and numbering scheme
-- Document the decision rationale and alternatives considered
+- Follow the ADR template in `docs/adr/0000-template.md`
+- Include required metadata (Date, Status, Deciders, **Last Reviewed**, **Tags**)
+- **Last Reviewed** date is required and should be updated periodically
+- **Tags** are mandatory (minimum 1, maximum 5 tags from approved list)
+- See [Documentation Standard](./docs/DOCUMENTATION.md) for ADR format requirements
 
 ## 🔄 DevKit Integration
 
@@ -134,4 +137,4 @@ When reporting bugs or requesting features:
 
 ---
 
-Thank you for contributing to KB Labs Profile Schemas! 🎉
+**See [Documentation Standard](./docs/DOCUMENTATION.md) for complete documentation guidelines.**
